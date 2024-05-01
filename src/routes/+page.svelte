@@ -257,7 +257,6 @@
 	#pagination span {
 		color: #fa55d4;
 	}
-
 	:global(html),
 	:global(body) {
 		min-height: 100%;
