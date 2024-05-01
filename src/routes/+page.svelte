@@ -261,7 +261,7 @@
 		font-family: 'Arvo';
 		font-style: normal;
 		font-weight: 500;
-		src: url('$lib/assets/fonts/Arvo-Medium.ttf') format('truetype');
+		src: url('$lib/assets/fonts/Arvo-Regular.ttf') format('truetype');
 	}
 	:global(html),
 	:global(body) {
