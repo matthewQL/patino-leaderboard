@@ -257,4 +257,15 @@
 	#pagination span {
 		color: #fa55d4;
 	}
+
+	:global(html),
+	:global(body) {
+		min-height: 100%;
+	}
+	:global(body) {
+		background-image: url('$lib/assets/images/retro-animated-background.gif');
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
 </style>
