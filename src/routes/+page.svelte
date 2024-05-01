@@ -257,6 +257,12 @@
 	#pagination span {
 		color: #fa55d4;
 	}
+	@font-face {
+		font-family: 'Arvo';
+		font-style: normal;
+		font-weight: 500;
+		src: url('$lib/assets/fonts/Arvo-Medium.ttf') format('truetype');
+	}
 	:global(html),
 	:global(body) {
 		min-height: 100%;
@@ -266,5 +272,6 @@
 		background-position: center;
 		background-size: cover;
 		background-repeat: no-repeat;
+		font-family: 'Arvo', sans-serif;
 	}
 </style>
