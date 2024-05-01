@@ -193,7 +193,7 @@
         color: white;
     }
     .teams li:nth-child(1) .team-data {
-        background-color: hsla(200, 50%, 50%, 1);
+        background-color: hsl(14, 61%, 43%);
     }
     .teams li:nth-child(1)::before {
         content: '';
@@ -209,7 +209,19 @@
         filter: drop-shadow(5px 5px 5px hsla(0, 0%, 0%, 0.95))
     }
     .teams li:nth-child(2) .team-data {
-        background-color: rgb(42, 175, 124);
+        background-color: rgb(181, 158, 57);
+    }
+	.teams li:nth-child(3) .team-data {
+        background-color: rgb(54, 131, 161);
+    }
+	.teams li:nth-child(4) .team-data {
+        background-color: rgb(85, 161, 81);
+    }
+	.teams li:nth-child(5) .team-data {
+        background-color: rgb(79, 64, 158);
+    }
+	.teams li:nth-child(6) .team-data {
+        background-color: rgb(148, 80, 150);
     }
     .team {
         display: flex;
