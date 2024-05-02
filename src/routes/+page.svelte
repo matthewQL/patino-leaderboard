@@ -97,6 +97,21 @@
 	const setCurrentPage = (newPage) => {
 		currentPage = newPage;
 	};
+
+	function periodAdjustment (currentPage) {
+		switch(currentPage) {
+  			case 1:
+				return 1;
+  			case 2:
+				return 3;
+  			case 3:
+				return 4;
+  			case 4:
+				return 5;
+  			case 5:
+				return 7;
+		}
+	}
 </script>
 
 <div id="pagination">
@@ -107,19 +122,19 @@
 			<li>
 				<a
 					href="/period/{currentPage - i}"
-					on:click|preventDefault={() => setCurrentPage(currentPage - i)}>Period {currentPage - i}</a
+					on:click|preventDefault={() => setCurrentPage(currentPage - i)}>Period {periodAdjustment(currentPage - i)}</a
 				>
 			</li>
 		{/if}
 	{/each}
-	<li><span>Period {currentPage}</span></li>
+	<li><span>Period {periodAdjustment(currentPage)}</span></li>
 	{#each Array(4) as _, i}
 		{#if currentPage + (i + 1) <= totalPages}
 			<li>
 				<a
 					href="/period/{currentPage + (i + 1)}"
 					on:click|preventDefault={() => setCurrentPage(currentPage + (i + 1))}
-					>Period {currentPage + (i + 1)}</a
+					>Period {periodAdjustment(currentPage + (i + 1))}</a
 				>
 			</li>
 		{/if}
