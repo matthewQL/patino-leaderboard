@@ -102,7 +102,7 @@
 <div id="pagination">
 <h1>Leaderboard - </h1>
 <ul>
-	{#each [3, 2, 1] as i}
+	{#each [4, 3, 2, 1] as i}
 		{#if currentPage - i > 0}
 			<li>
 				<a
@@ -113,7 +113,7 @@
 		{/if}
 	{/each}
 	<li><span>Period {currentPage}</span></li>
-	{#each Array(3) as _, i}
+	{#each Array(4) as _, i}
 		{#if currentPage + (i + 1) <= totalPages}
 			<li>
 				<a
