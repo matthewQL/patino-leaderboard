@@ -157,12 +157,13 @@
 		list-style: none;
 		justify-content: center;
 		margin: 0;
-		padding: 0;
+		padding: 0 5rem;
 	}
     .teams img {
         border-top-left-radius: 20px;
     }
     .teams > li {
+		flex: 1;
         position: relative;
         display: flex;
         flex-direction: column;
