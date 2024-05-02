@@ -157,7 +157,7 @@
 		list-style: none;
 		justify-content: center;
 		margin: 0;
-		padding: 0 5rem;
+		padding: 0 10vw;
 	}
     .teams img {
         border-top-left-radius: 20px;
@@ -234,7 +234,11 @@
         height: 2rem;
         margin-right: 0.5rem;
         border-radius: 2rem;
-
+		padding: 3px;
+		border-width: 2px;
+		border-style: solid;
+		border-color: hsla(0, 100%, 100%, 0.5);
+		background-color: hsla(0, 100%, 100%, 0.15);
     }
     .team p {
         font-size: 1.5rem;
