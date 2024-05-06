@@ -253,7 +253,7 @@
 		justify-content: space-between;
     }
 	.teams .team-data p span {
-		display: none;
+		/* display: none; */
 		margin-left: auto;
 	}
     .teams li:nth-child(1) .team-data {
