@@ -115,26 +115,26 @@
 </script>
 
 <div id="pagination">
-<h1>Leaderboard - </h1>
+<h1>Leaderboard - Period </h1>
 <ul>
 	{#each [4, 3, 2, 1] as i}
 		{#if currentPage - i > 0}
 			<li>
 				<a
 					href="/period/{currentPage - i}"
-					on:click|preventDefault={() => setCurrentPage(currentPage - i)}>Period {periodAdjustment(currentPage - i)}</a
+					on:click|preventDefault={() => setCurrentPage(currentPage - i)}>{periodAdjustment(currentPage - i)}</a
 				>
 			</li>
 		{/if}
 	{/each}
-	<li><span>Period {periodAdjustment(currentPage)}</span></li>
+	<li><span>{periodAdjustment(currentPage)}</span></li>
 	{#each Array(4) as _, i}
 		{#if currentPage + (i + 1) <= totalPages}
 			<li>
 				<a
 					href="/period/{currentPage + (i + 1)}"
 					on:click|preventDefault={() => setCurrentPage(currentPage + (i + 1))}
-					>Period {periodAdjustment(currentPage + (i + 1))}</a
+					>{periodAdjustment(currentPage + (i + 1))}</a
 				>
 			</li>
 		{/if}
@@ -258,7 +258,7 @@
 		background-color: hsla(0, 100%, 100%, 0.15);
     }
     .team p {
-        font-size: 1.5rem;
+        font-size: 1rem;
         margin: 0;
     }
     #pagination {
