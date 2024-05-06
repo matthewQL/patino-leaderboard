@@ -40,13 +40,18 @@
 		let periods = new Map();
 		let teamCash = new Map();
 		let teamData = new Map();
+		let teamMembersCount = new Map();
+		let teamAverageCash = new Map();
+		let teamTotalCash = new Map();
 
 		for (let item of data) {
+			// Add the period to the team
 			let periodKey = `${item.Period}`;
 			if (!periods.has(periodKey)) {
 				periods.set(periodKey, new Map());
 			}
 
+			// Add the team to the period
 			let teams = periods.get(periodKey);
 			let teamKey = `${item.TeamName}`;
 			if (!teams.has(teamKey)) {
@@ -61,6 +66,13 @@
 				teamCash.set(cashKey, Number(item.Cash));
 			}
 
+			// Count the number of members in each team
+			if (teamMembersCount.has(cashKey)) {
+				teamMembersCount.set(cashKey, teamMembersCount.get(cashKey) + 1);
+			} else {
+				teamMembersCount.set(cashKey, 1);
+			}
+
 			// Combine all student data by period and team
 			let dataKey = `${item.TeamName}-${item.Period}`;
 			if (teamData.has(dataKey)) {
@@ -70,11 +82,23 @@
 			}
 		}
 
+		// Calculate the total cash for each team
+		teamCash.forEach((cash, key) => {
+			let totalCash =+ cash;
+			teamTotalCash.set(key, totalCash);
+		});
+
+		// Calculate the average cash per person for each team
+		teamCash.forEach((totalCash, key) => {
+			let averageCash = totalCash / teamMembersCount.get(key);
+			teamAverageCash.set(key, averageCash);
+		});
+
 		let result = Array.from(periods.values()).map((teams) => {
 			let teamArray = Array.from(teams.values());
 			teamArray.sort(
 				(a, b) =>
-					teamCash.get(`${b.TeamName}-${b.Period}`) - teamCash.get(`${a.TeamName}-${a.Period}`)
+					teamAverageCash.get(`${b.TeamName}-${b.Period}`) - teamAverageCash.get(`${a.TeamName}-${a.Period}`)
 			);
 			return teamArray;
 		});
@@ -83,6 +107,9 @@
 		for (let period of result) {
 			for (let team of period) {
 				team.students = teamData.get(`${team.TeamName}-${team.Period}`);
+				team.totalTeamCash = teamTotalCash.get(`${team.TeamName}-${team.Period}`);
+
+				console.log(team.totalTeamCash, `${team.TeamName}-${team.Period}`);
 			}
 		}
 
@@ -149,11 +176,12 @@
 				<li>
 					<img src="https://drive.google.com/thumbnail?id={team.Team}" alt={team.Name} />
 					<div class="team-data">
+						<div class="team-cash">${team.totalTeamCash}</div>
                         <h3>{team.TeamName}</h3>
                         {#each team.students as student (student.Name)}
                             <div class="team">
                                 <img src="https://drive.google.com/thumbnail?id={student.Photo}" alt={student.Name} />
-                                <p>{student.Name}</p>
+                                <p>{student.Name} <span>${student.Cash}</span></p>
                             </div>
                         {/each}
                     </div>
@@ -195,7 +223,18 @@
         padding: 10px;
         border-bottom-right-radius: 20px;
         flex: 1;
+		position: relative;
     }
+	.teams .team-cash {
+		position: absolute;
+		top: 0;
+		left: -2px;
+		background-color: hsl(117, 55%, 35%);
+		transform: translateY(calc(-10px + -100%));
+		padding: 8px 12px;
+		color: white;
+		filter: drop-shadow(5px 5px 5px hsla(0, 0%, 0%, 0.95));
+	}
     .teams .team-data h3 {
         margin-top: 0;
         color: white;
@@ -209,7 +248,14 @@
     }
     .teams .team-data p {
         color: white;
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
     }
+	.teams .team-data p span {
+		display: none;
+		margin-left: auto;
+	}
     .teams li:nth-child(1) .team-data {
         background-color: hsl(14, 61%, 43%);
     }
@@ -224,7 +270,7 @@
         background-position: top right;
         background-repeat: no-repeat;
         background-size: 65%;
-        filter: drop-shadow(5px 5px 5px hsla(0, 0%, 0%, 0.95))
+        filter: drop-shadow(5px 5px 5px hsla(0, 0%, 0%, 0.95));
     }
     .teams li:nth-child(2) .team-data {
         background-color: rgb(181, 158, 57);
