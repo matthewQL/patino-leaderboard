@@ -172,13 +172,14 @@
 		list-style: none;
 		justify-content: center;
 		margin: 0;
-		padding: 0 10vw;
+		padding: 0;
 	}
     .teams img {
         border-top-left-radius: 20px;
     }
     .teams > li {
-		flex: 1;
+		flex: none;
+		width: calc(100% - 6);
         position: relative;
         display: flex;
         flex-direction: column;
@@ -198,12 +199,13 @@
     .teams .team-data h3 {
         margin-top: 0;
         color: white;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         font-weight: bold;
         text-align: center;
         background-color: hsla(0, 100%, 100%, 0.15);
         padding: 8px 0 5px;
         border-bottom: 5px double hsla(0, 100%, 100%, 0.5);
+		margin-bottom: 1rem;
     }
     .teams .team-data p {
         color: white;
@@ -245,10 +247,10 @@
         margin-bottom: 5px;
     }
     .team img {
-        width: 2rem;
-        height: 2rem;
+        width: 1.5rem;
+        height: 1.5rem;
         margin-right: 0.5rem;
-        border-radius: 2rem;
+        border-radius: 1.5rem;
 		padding: 3px;
 		border-width: 2px;
 		border-style: solid;
